@@ -16,7 +16,7 @@ import com.jubaya.todoapp.viewmodel.ListTodoViewModel
 class TodoListFragment : Fragment() {
     private lateinit var binding: FragmentTodoListBinding
     private lateinit var viewModel:ListTodoViewModel
-    private val todoListAdapter  = TodoListAdapter(arrayListOf(), {todo -> viewModel.clearTask(todo)})
+    private val todoListAdapter  = TodoListAdapter(arrayListOf(), {todo -> viewModel.updateTask(todo.uuid)})
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +50,7 @@ class TodoListFragment : Fragment() {
                 binding.recViewTodo?.visibility = View.GONE
                 binding.txtError.setText("Your todo still empty.")
             } else {
+
                 binding.recViewTodo?.visibility = View.VISIBLE
             }
         })

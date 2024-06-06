@@ -28,6 +28,12 @@ class DetailTodoViewModel(application: Application)
         }
     }
 
+    fun update(todo: Todo){
+        launch {
+            buildDb(getApplication()).todoDao().updateTodo(todo)
+        }
+    }
+
     fun fetch(uuid:Int) {
         launch {
             todoLD.postValue(buildDb(getApplication()).todoDao().selectTodo(uuid))
